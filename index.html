@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Comcast Thermostat</title>
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <link rel="stylesheet" href="https://code.jquery.com/resources/demos/style.css">
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.min.js'></script>
+        </head>
+        <script src="./thermo.js"></script>
+        <script>
+            $( function() {
+                $('#loginForm').submit((event)=>{
+                    event.preventDefault();
+                    login($('#account').val(), $('#password').val())})
+            } );
+        </script>
+        <style>
+            .slider { width:300px; display:inline-block}
+            .setStatus {display:inline-block}
+        </style>
+    </head>
+<body style='line-height:2em'>
+<div id='login'>
+    <div>Please login:</div>
+    <div id='loginErrMsg' style='display:none'></div>
+    <form id='loginForm' action="">
+        <input id='account' type='text' placeholder='email address'/>
+        <input id='password' type='password' placeholder='password'/>
+        <input type='submit' id='submitBtn' value='Login'/>
+    </form>
+</div>
+
+<div>
+    <p style='display:none'>
+        <span>Account:</span><span id='thermoAccount'/>
+    </p>
+    <div id='noThermo' style='display:none'> No thermostat found</div>
+    <div id='allThermo' style='display:none'> </div>
+</div>
+
+<div id='thermoTemplate' style='display:none'>
+        <span>Thermostat </span><span class='thermoId'></span>: <span class='thermoVal'></span>
+            <div class="slider"></div> <div class='setStatus'></div>
+</div>
+
+</body>
+</html>
